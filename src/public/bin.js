@@ -7,7 +7,7 @@ class Bin {
         this.items = [];
         this.img = loadImage(`images/${binType}.png`);
     }
-       
+    
     draw() {
         image(this.img, this.x - Math.floor(this.width / 2), this.y);
     }
