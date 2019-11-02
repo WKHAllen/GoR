@@ -6,9 +6,13 @@ class Bin {
         this.width = width;
         this.height = height;
         this.items = [];
+        this.img;
+        function preload() {
+            this.img = loadImage('images/compost.png');  
+        }
     }
-
+       
     draw() {
-        rect(this.x, this.y, this.width, this.height);
+        image(this.img, 0, 0);
     }
 }
