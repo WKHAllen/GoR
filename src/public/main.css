@@ -1,1 +1,7 @@
-/* TODO: style webpage */
+.centered-text {
+    text-align: center;
+}
+
+.padded {
+    padding: 16px;
+}
