@@ -19,7 +19,7 @@ function setup() {
     trashArea = [windowWidth / 2 - 25, windowHeight - 50, 50, 50];
     binArea = [0, 0, windowWidth, 100];
     initGame();
-    setPage(2); // TODO: remove this later
+    // setPage(2); // TODO: remove this later
 }
 
 function draw() {
