@@ -14,6 +14,7 @@ function setup() {
     canvas.parent('page-2');
     trash = new Trash();
     bin = new Bin(trashNames[0], width - 50, 10, 40, 40);
+    setPage(3);
 }
 
 function draw() {
