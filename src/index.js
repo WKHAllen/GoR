@@ -10,11 +10,11 @@ var app = express();
 app.use(express.static(path.join(__dirname, publicDir)));
 
 app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(__dirname, errorDir, '404.html'));
+    res.status(404).sendFile(path.join(errorDir, '404.html'));
 });
 
 app.use((err, req, res, next) => {
-    res.status(500).sendFile(path.join(__dirname, errorDir, '500.html'));
+    res.status(500).sendFile(path.join(errorDir, '500.html'));
 });
 
 app.listen(port, () => {
