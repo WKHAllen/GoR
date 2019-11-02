@@ -35,6 +35,7 @@ class Trash {
         this.x = width / 2;
         this.y = height - 10;
         this.scale = 1;
+
     }
 
     moveToward(bin) {
@@ -57,7 +58,7 @@ class Trash {
     }
 
     draw() {
-        rect(this.x, this.y, 10, 10);
+        
     }
 
     inCorrectBin(bin) {
