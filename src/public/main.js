@@ -20,7 +20,7 @@ function setup() {
     canvas = createCanvas(windowWidth, windowHeight);
     canvas.parent('page-2');
     trashArea = [windowWidth / 2 - 25, windowHeight - 50, 50, 50];
-    binArea = [0, 0, windowWidth, 100];
+    binArea = [0, 0, windowWidth, 315];
     initGame();
 }
 
@@ -89,8 +89,8 @@ function initGame() {
     bins = [];
     for (var i = 0; i < trashTypes.length; i++) {
         x = Math.floor(width / trashTypes.length * (i + 0.5));
-        y = 30;
-        bins.push(new Bin(trashTypes[i], x, y, 40, 40));
+        y = 10;
+        bins.push(new Bin(trashTypes[i], x, y));
     }
 }
 

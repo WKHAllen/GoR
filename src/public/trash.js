@@ -1,7 +1,7 @@
 const movementConstant = 20;
 
 const trashNames = {
-    'plastic/metal': [
+    'plastic_metal': [
 
     ],
     'paper': [
@@ -54,7 +54,7 @@ class Trash {
     }
 
     draw() {
-        rect(this.x, this.y, 10, 10);
+        rect(this.x, this.y, 20, 20);
     }
 
     inCorrectBin(bin) {

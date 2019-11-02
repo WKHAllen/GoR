@@ -1,14 +1,14 @@
 class Bin {
-    constructor(binType, x, y, width, height) {
+    constructor(binType, x, y) {
         this.type = binType;
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
+        this.width = 205;
         this.items = [];
+        this.img = loadImage(`images/${binType}.png`);
     }
-
+       
     draw() {
-        rect(this.x, this.y, this.width, this.height);
+        image(this.img, this.x - Math.floor(this.width / 2), this.y);
     }
 }
