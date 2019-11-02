@@ -1,0 +1,21 @@
+{
+  "name": "gor",
+  "version": "0.1.0",
+  "description": "Go reduce, reuse, recycle, refuse",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WKHAllen/GoR.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WKHAllen/GoR/issues"
+  },
+  "homepage": "https://github.com/WKHAllen/GoR#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
