@@ -1,5 +1,5 @@
 var canvas;
-var trash = [];
+var trash = [null];
 var bins = [];
 
 var currentPage = 1;
@@ -11,6 +11,9 @@ var mouseUpPos = null;
 var trashArea;
 var binArea;
 
+var trashSize;
+var binSize;
+
 var debug = false;
 
 function setup() {
@@ -19,22 +22,34 @@ function setup() {
     trashArea = [windowWidth / 2 - 25, windowHeight - 50, 50, 50];
     binArea = [0, 0, windowWidth, 100];
     initGame();
-    // setPage(2); // TODO: remove this later
 }
 
 function draw() {
-    background(220);
-    if (debug) {
-        fill(0, 255, 0);
-        rect(...trashArea);
-        fill(0, 0, 255);
-        rect(...binArea);
+    if (trash.length > 0 && trash[0] !== null) {
+        background(220);
+        if (debug) {
+            fill(0, 255, 0);
+            rect(...trashArea);
+            fill(0, 0, 255);
+            rect(...binArea);
+        }
+        fill(255);
+        if (animating !== null) {
+            if (!trash[trash.length - 1].moveToward(bins[animating])) {
+                trash[trash.length - 1].putInBin(bins[animating]);
+                trash.pop();
+                animating = null;
+            }
+        }
+        if (trash.length > 0) {
+            trash[trash.length - 1].draw();
+        } else {
+            trash.push(null);
+            setPage(3);
+        }
+        for (var bin of bins)
+            bin.draw();
     }
-    fill(255);
-    // TODO: game logic
-    if (trash.length > 0) trash[trash.length - 1].draw();
-    for (var bin of bins)
-        bin.draw();
 }
 
 function windowResized() {
@@ -42,14 +57,14 @@ function windowResized() {
 }
 
 function mousePressed() {
-    if (!animating)
+    if (animating === null)
         mouseDownPos = [mouseX, mouseY];
     else
         mouseDownPos = null;
 }
 
 function mouseReleased() {
-    if (!animating && mouseDownPos !== null) {
+    if (animating === null && mouseDownPos !== null) {
         mouseUpPos = [mouseX, mouseY];
         beginAnimation(mouseDownPos, mouseUpPos);
     } else {
@@ -66,10 +81,17 @@ function setPage(pageNumber) {
 }
 
 function initGame() {
+    var trashTypes = Object.keys(trashNames);
+    var x, y;
     trash = [];
-    trash.push(new Trash()); // TODO: push more trash (how much?)
+    for (var i = 0; i < 10; i++)
+        trash.push(new Trash());
     bins = [];
-    bins.push(new Bin(trashNames[0], width - 50, 10, 40, 40)); // TODO: push 5 bins total
+    for (var i = 0; i < trashTypes.length; i++) {
+        x = Math.floor(width / trashTypes.length * (i + 0.5));
+        y = 30;
+        bins.push(new Bin(trashTypes[i], x, y, 40, 40));
+    }
 }
 
 function beginAnimation(downPos, upPos) {

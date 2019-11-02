@@ -4,9 +4,6 @@ const trashNames = {
     'plastic/metal': [
 
     ],
-    'cardboard': [
-
-    ],
     'paper': [
 
     ],
