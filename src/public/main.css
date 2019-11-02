@@ -22,11 +22,12 @@ html, body, #page-3 , #page-1{
 .page1-card, .page3-card {
     position: absolute;
     transform: translate(-50%, -50%);
-    left: 50%;top: 50%;
+    left: 50%;
+    top: 50%;
 }
 
 .page3-bgimg {
-    background-image: url('page3-background.jpg');
+    background-image: url('images/page3-background.jpg');
     background-position: center;
     background-size: cover;
 }
@@ -35,5 +36,4 @@ html, body, #page-3 , #page-1{
     background-image: url('images/Page1_Background_Img.jpg');
     background-position: center;
     background-size: cover;
-
 }

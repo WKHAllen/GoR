@@ -4,15 +4,14 @@
         <title>Go Recycle</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="main.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js" integrity="sha256-WVsM3xrcqyuFNF3W1qtIKbHFsD0977nDQA8DCMp1zCw=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js" integrity="sha256-2/3R3NV5zryj0fDjD3cDh+SNiWQ/TJiMVZzAo5FrhiU=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="trash.js"></script>
         <script type="text/javascript" src="bin.js"></script>
         <script type="text/javascript" src="main.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js" integrity="sha256-WVsM3xrcqyuFNF3W1qtIKbHFsD0977nDQA8DCMp1zCw=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js" integrity="sha256-2/3R3NV5zryj0fDjD3cDh+SNiWQ/TJiMVZzAo5FrhiU=" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="page-1" class = "page1-bgimg">
-            <!-- TODO: INSERT PAGE 1 CODE HERE -->
             <!--https://www.winneshiekcounty.org/wp-content/uploads/2017/02/Recycling-Guide.pdf - Link to guide-->
             <div class="card page1-card w-50">
                 <div class = "card-header"><h4>Instructions:</h4></div>
@@ -36,17 +35,13 @@
                 <div class="card-body">
                     <h5 class="card-title">Compost Includes:</h5>
                     <p class="card-text">Fruits, vegetables, Tea bags, used facial tissues,Pencil shavings</p>
-                </div>  
-                <div class="align-self-center mx-auto"> 
-                     <div class="card-footer">
-                         <button type="button" class="btn btn-primary btn-lg" >Start Game!</button> 
-                     </div>
-                 </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button type="button" class="btn btn-primary btn-lg" onclick="setPage(2);">Start Game!</button> 
+                </div>
             </div> 
         </div>
         <div id="page-2" class="hidden"></div>
-        <!-- <div id="page-3"> -->
-            <!-- TODO: INSERT PAGE 3 CODE HERE -->
         <div id="page-3" class="page3-bgimg hidden">
             <div class="card page3-card text-center w-50">
                 <div class="card-header display-4">
@@ -57,10 +52,9 @@
                     <p class="card-text">Straws are not recycleable</p>
                 </div>
                 <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-lg" onclick="setPage(1, 3)">Restart the game</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="setPage(2);">Play again</button>
                 </div>
             </div>
         </div>
-        <!-- </div> -->
     </body>
 </html>
