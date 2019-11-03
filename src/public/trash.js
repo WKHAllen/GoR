@@ -2,16 +2,16 @@ const movementConstant = 20;
 
 const trashNames = {
     'plastic_metal': [
-        'electrialCord','pepsiCan','plasticCup','reusablePlasticBag','tinCan','tire'
+        'electricalCord', 'pepsiCan', 'plasticCup', 'reusablePlasticBag', 'tinCan', 'tire'
     ],
     'paper': [
-        'book','eggCarton','officePaper'
+        'book', 'eggCarton', 'officePaper'
     ],
     'landfill': [
-        'cigarette','eraser','foodPackaging','milkBox','plasticBag','rubberSlipper','snickerWrapper','styrofoam'
+        'cigarette', 'eraser', 'foodPackaging', 'milkBox', 'plasticBag', 'rubberSlipper', 'snickersWrapper', 'styrofoam'
     ],
     'compost': [
-        'foodScraps','leftoversFood','rottenTomato'
+        'foodScraps', 'leftoversFood', 'rottenTomato'
     ]
 };
 
@@ -31,7 +31,9 @@ class Trash {
         this.name = randomTrashName(this.type);
         this.x = width / 2;
         this.y = height - 10;
-        this.scale = 1;
+        this.width = 150;
+        this.height = 150;
+        this.img = loadImage(`images/${this.name}.png`);
     }
 
     moveToward(bin) {
@@ -54,7 +56,7 @@ class Trash {
     }
 
     draw() {
-        rect(this.x, this.y, 20, 20);
+        image(this.img, this.x - Math.floor(this.width / 2), this.y - this.height);
     }
 
     inCorrectBin(bin) {

@@ -6,6 +6,8 @@
         <link rel="stylesheet" type="text/css" href="main.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js" integrity="sha256-WVsM3xrcqyuFNF3W1qtIKbHFsD0977nDQA8DCMp1zCw=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js" integrity="sha256-2/3R3NV5zryj0fDjD3cDh+SNiWQ/TJiMVZzAo5FrhiU=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="screenText.js"></script>
+        <script type="text/javascript" src="timer.js"></script>
         <script type="text/javascript" src="trash.js"></script>
         <script type="text/javascript" src="bin.js"></script>
         <script type="text/javascript" src="main.js"></script>
@@ -14,30 +16,28 @@
         <div id="page-1" class = "page1-bgimg">
             <!--https://www.winneshiekcounty.org/wp-content/uploads/2017/02/Recycling-Guide.pdf - Link to guide-->
             <div class="card page1-card w-50">
-                <div class = "card-header"><h4>Instructions:</h4></div>
+                <div class = "card-header"><h4>Instructions</h4></div>
                 <div class="card-body">
-                    <p class="card-text">How to play: Sort Trash according to it's category by dradding it to the right bin.</p>
+                    <p class="card-text"><b>How to play:</b> Sort trash according to it's category by dragging it to the right bin.</p>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Paper Includes:</h5>
-                    <p class="card-text">Newspapers, magazines, catalogs, office paper, egg cartons, Kraft paper, phone books, junk mail,
-                        brown paper bags, feed sacks, books, and shredded paper.</p>
+                    <h5 class="card-title">Paper includes:</h5>
+                    <p class="card-text">Newspapers, magazines, catalogs, office paper, egg cartons, Kraft paper, phone books, junk mail, brown paper bags, feed sacks, books, and shredded paper.</p>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Plastic and metal includes:</h5>
-                    <p class="card-text">milk jugs, soap bottles, butter tubs, yogurt
-                        cups, buckets, pop and water bottles Tin cans, pop cans</p>
+                    <p class="card-text">Milk jugs, soap bottles, butter tubs, yogurt cups, buckets, pop and water bottles Tin cans, pop cans.</p>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Landfill Includes:</h5>
-                    <p class="card-text">paper coffee cups, clothing, plastic bags, Cigarette buts, Food packaging, Aluminium cans</p>
+                    <h5 class="card-title">Landfill includes:</h5>
+                    <p class="card-text">Paper coffee cups, clothing, plastic bags, cigarette buts, food packaging, aluminium cans.</p>
                 </div>       
                 <div class="card-body">
-                    <h5 class="card-title">Compost Includes:</h5>
-                    <p class="card-text">Fruits, vegetables, Tea bags, used facial tissues,Pencil shavings</p>
+                    <h5 class="card-title">Compost includes:</h5>
+                    <p class="card-text">Fruits, vegetables, tea bags, used facial tissues, pencil shavings.</p>
                 </div>
                 <div class="card-footer text-center">
-                    <button type="button" class="btn btn-primary btn-lg" onclick="setPage(2);">Start Game!</button> 
+                    <button type="button" class="btn btn-primary btn-lg" onclick="setPage(2);">Start game</button> 
                 </div>
             </div> 
         </div>
@@ -45,7 +45,7 @@
         <div id="page-3" class="page3-bgimg hidden">
             <div class="card page3-card text-center w-50">
                 <div class="card-header display-4">
-                    Your score: 5
+                    Your score: <span id="game-score">0</span>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Keep in mind</h5>
