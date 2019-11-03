@@ -7,6 +7,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js" integrity="sha256-WVsM3xrcqyuFNF3W1qtIKbHFsD0977nDQA8DCMp1zCw=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js" integrity="sha256-2/3R3NV5zryj0fDjD3cDh+SNiWQ/TJiMVZzAo5FrhiU=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="screenText.js"></script>
+        <script type="text/javascript" src="timer.js"></script>
         <script type="text/javascript" src="trash.js"></script>
         <script type="text/javascript" src="bin.js"></script>
         <script type="text/javascript" src="main.js"></script>
@@ -44,7 +45,7 @@
         <div id="page-3" class="page3-bgimg hidden">
             <div class="card page3-card text-center w-50">
                 <div class="card-header display-4">
-                    Your score: 5
+                    Your score: <span id="game-score">0</span>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Keep in mind</h5>

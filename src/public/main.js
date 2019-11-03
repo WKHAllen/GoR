@@ -14,16 +14,17 @@ var binArea;
 var score;
 
 var screenText = new ScreenText();
+var scoreText = new ScreenText();
+var timer = new Timer();
 
 var debug = false;
 
 function setup() {
     canvas = createCanvas(windowWidth, windowHeight);
     canvas.parent('page-2');
-    trashArea = [windowWidth / 2 - 25, windowHeight - 50, 50, 50];
+    trashArea = [windowWidth / 2 - 75, windowHeight - 150, 150, 150];
     binArea = [0, 0, windowWidth, 315];
     textSize(30);
-    initGame();
 }
 
 function draw() {
@@ -41,17 +42,21 @@ function draw() {
                 trash[trash.length - 1].putInBin(bins[animating]);
                 trash.pop();
                 animating = null;
+                timer.start(5, 'Time remaining: ', [0], 8, 30, LEFT, tooSlow);
             }
         }
         if (trash.length > 0) {
             trash[trash.length - 1].draw();
         } else {
             trash.push(null);
+            updatePageThree();
             setPage(3);
         }
         for (var bin of bins)
             bin.draw();
         screenText.draw();
+        scoreText.draw();
+        timer.draw();
     }
 }
 
@@ -92,25 +97,44 @@ function initGame() {
     bins = [];
     for (var i = 0; i < trashTypes.length; i++) {
         x = Math.floor(width / trashTypes.length * (i + 0.5));
-        y = 10;
+        y = 170;
         bins.push(new Bin(trashTypes[i], x, y));
     }
     score = 0;
+    scoreText.show('Score: 0', [0], width - 8, 30, RIGHT, -1);
+    timer.start(5, 'Time remaining: ', [0], 8, 30, LEFT, tooSlow);
 }
 
 function beginAnimation(downPos, upPos) {
     if (pointInArea(downPos, trashArea) && pointInArea(upPos, binArea)) {
         animating = Math.floor(upPos[0] / (windowWidth / bins.length));
         if (trash[trash.length - 1].inCorrectBin(bins[animating])) {
-            score++;
             screenText.show('Correct', [0, 191, 63]);
+            scoreText.show(`Score: ${++score}`, [0], width - 8, 30, RIGHT, -1);
         } else {
-            score--;
             screenText.show('Incorrect', [191, 0, 0]);
         }
+        timer.stop();
     }
 }
 
 function pointInArea(point, area) {
     return area[0] <= point[0] && point[0] < area[0] + area[2] && area[1] <= point[1] && point[1] < area[1] + area[3];
+}
+
+function tooSlow() {
+    timer.stop();
+    screenText.show('Too slow', [191, 0, 0]);
+    trash.pop();
+    if (trash.length > 0) {
+        timer.start(5, 'Time remaining: ', [0], 8, 30, LEFT, tooSlow);
+        trash[trash.length - 1].draw();
+    } else {
+        trash.push(null);
+        setPage(3);
+    }
+}
+
+function updatePageThree() {
+    document.getElementById('game-score').innerText = score;
 }

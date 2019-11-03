@@ -10,7 +10,8 @@ class ScreenText {
         this.y = y !== undefined ? y : height / 2;
         this.align = align !== undefined ? align : CENTER;
         this.showing = true;
-        setTimeout(() => { this.hide(); }, ms !== undefined ? ms : 1000);
+        if (this.timeout !== undefined) clearTimeout(this.timeout);
+        this.timeout = ms !== -1 ? setTimeout(() => { this.hide(); }, ms !== undefined ? ms : 1000) : undefined;
     }
 
     hide() {
