@@ -2,16 +2,16 @@ const movementConstant = 20;
 
 const trashNames = {
     'plastic_metal': [
-
+        'electrialCord','pepsiCan','plasticCup','reusablePlasticBag','tinCan','tire'
     ],
     'paper': [
-
+        'book','eggCarton','officePaper'
     ],
     'landfill': [
-
+        'cigarette','eraser','foodPackaging','milkBox','plasticBag','rubberSlipper','snickerWrapper','styrofoam'
     ],
     'compost': [
-
+        'foodScraps','leftoversFood','rottenTomato'
     ]
 };
 
