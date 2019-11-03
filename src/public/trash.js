@@ -31,7 +31,6 @@ class Trash {
         this.name = randomTrashName(this.type);
         this.x = width / 2;
         this.y = height - 10;
-        this.scale = 1;
     }
 
     moveToward(bin) {

@@ -11,8 +11,9 @@ var mouseUpPos = null;
 var trashArea;
 var binArea;
 
-var trashSize;
-var binSize;
+var score;
+
+var screenText = new ScreenText();
 
 var debug = false;
 
@@ -21,6 +22,7 @@ function setup() {
     canvas.parent('page-2');
     trashArea = [windowWidth / 2 - 25, windowHeight - 50, 50, 50];
     binArea = [0, 0, windowWidth, 315];
+    textSize(30);
     initGame();
 }
 
@@ -49,6 +51,7 @@ function draw() {
         }
         for (var bin of bins)
             bin.draw();
+        screenText.draw();
     }
 }
 
@@ -92,11 +95,20 @@ function initGame() {
         y = 10;
         bins.push(new Bin(trashTypes[i], x, y));
     }
+    score = 0;
 }
 
 function beginAnimation(downPos, upPos) {
-    if (pointInArea(downPos, trashArea) && pointInArea(upPos, binArea))
+    if (pointInArea(downPos, trashArea) && pointInArea(upPos, binArea)) {
         animating = Math.floor(upPos[0] / (windowWidth / bins.length));
+        if (trash[trash.length - 1].inCorrectBin(bins[animating])) {
+            score++;
+            screenText.show('Correct', [0, 191, 63]);
+        } else {
+            score--;
+            screenText.show('Incorrect', [191, 0, 0]);
+        }
+    }
 }
 
 function pointInArea(point, area) {
