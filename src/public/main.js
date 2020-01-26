@@ -11,6 +11,8 @@ var binArea;
 
 var score;
 
+var highscoreKey = 'highscore';
+
 var screenText = new ScreenText();
 var scoreText = new ScreenText();
 var timer = new Timer();
@@ -128,6 +130,9 @@ function tooSlow() {
 }
 
 function updatePageThree() {
-    console.log(score);
     document.getElementById('game-score').innerText = score;
+    var highscore = localStorage.getItem(highscoreKey) || 0;
+    highscore = score > highscore ? score : highscore;
+    localStorage.setItem(highscoreKey, highscore);
+    document.getElementById('game-highscore').innerText = highscore;
 }

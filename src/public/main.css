@@ -37,3 +37,8 @@ html, body, #page-3 , #page-1{
     background-position: center;
     background-size: cover;
 }
+
+.highscore-text {
+    font-size: 20pt;
+    font-style: italic;
+}
