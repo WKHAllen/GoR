@@ -5,8 +5,6 @@ var bins = [];
 var currentPage = 1;
 
 var animating = null;
-var mouseDownPos = null;
-var mouseUpPos = null;
 
 var trashArea;
 var binArea;
@@ -64,20 +62,9 @@ function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 
-function mousePressed() {
+function mouseClicked() {
     if (animating === null)
-        mouseDownPos = [mouseX, mouseY];
-    else
-        mouseDownPos = null;
-}
-
-function mouseReleased() {
-    if (animating === null && mouseDownPos !== null) {
-        mouseUpPos = [mouseX, mouseY];
-        beginAnimation(mouseDownPos, mouseUpPos);
-    } else {
-        mouseUpPos = null;
-    }
+        beginAnimation();
 }
 
 function setPage(pageNumber) {
@@ -105,19 +92,16 @@ function initGame() {
     timer.start(5, 'Time remaining: ', [0], 8, 30, LEFT, tooSlow);
 }
 
-function beginAnimation(downPos, upPos) {
-    if (pointInArea(downPos, binArea) && pointInArea(upPos, binArea)) {
-        animating = Math.floor(downPos[0] / (windowWidth / bins.length));
-        animatingUp = Math.floor(upPos[0] / (windowWidth / bins.length));
-        if (animating == animatingUp) {
-            if (trash[trash.length - 1].inCorrectBin(bins[animating])) {
-                screenText.show('Correct', [0, 191, 63]);
-                scoreText.show(`Score: ${++score}`, [0], width - 8, 30, RIGHT, -1);
-            } else {
-                screenText.show('Incorrect', [191, 0, 0]);
-            }
-            timer.stop();
+function beginAnimation() {
+    if (pointInArea([mouseX, mouseY], binArea)) {
+        animating = Math.floor(mouseX / (windowWidth / bins.length));
+        if (trash[trash.length - 1].inCorrectBin(bins[animating])) {
+            screenText.show('Correct', [0, 191, 63]);
+            scoreText.show(`Score: ${++score}`, [0], width - 8, 30, RIGHT, -1);
+        } else {
+            screenText.show('Incorrect', [191, 0, 0]);
         }
+        timer.stop();
     }
 }
 
