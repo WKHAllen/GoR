@@ -106,15 +106,18 @@ function initGame() {
 }
 
 function beginAnimation(downPos, upPos) {
-    if (pointInArea(downPos, trashArea) && pointInArea(upPos, binArea)) {
-        animating = Math.floor(upPos[0] / (windowWidth / bins.length));
-        if (trash[trash.length - 1].inCorrectBin(bins[animating])) {
-            screenText.show('Correct', [0, 191, 63]);
-            scoreText.show(`Score: ${++score}`, [0], width - 8, 30, RIGHT, -1);
-        } else {
-            screenText.show('Incorrect', [191, 0, 0]);
+    if (pointInArea(downPos, binArea) && pointInArea(upPos, binArea)) {
+        animating = Math.floor(downPos[0] / (windowWidth / bins.length));
+        animatingUp = Math.floor(upPos[0] / (windowWidth / bins.length));
+        if (animating == animatingUp) {
+            if (trash[trash.length - 1].inCorrectBin(bins[animating])) {
+                screenText.show('Correct', [0, 191, 63]);
+                scoreText.show(`Score: ${++score}`, [0], width - 8, 30, RIGHT, -1);
+            } else {
+                screenText.show('Incorrect', [191, 0, 0]);
+            }
+            timer.stop();
         }
-        timer.stop();
     }
 }
 
