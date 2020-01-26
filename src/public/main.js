@@ -63,12 +63,12 @@ function windowResized() {
 }
 
 function mouseClicked() {
-    if (animating === null)
+    if (animating === null && trash[0] !== null)
         beginAnimation();
 }
 
 function touchEnded() {
-    if (animating === null)
+    if (animating === null && trash[0] !== null)
         beginAnimation();
 }
 
@@ -128,5 +128,6 @@ function tooSlow() {
 }
 
 function updatePageThree() {
+    console.log(score);
     document.getElementById('game-score').innerText = score;
 }
