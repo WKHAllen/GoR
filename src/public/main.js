@@ -67,6 +67,11 @@ function mouseClicked() {
         beginAnimation();
 }
 
+function touchEnded() {
+    if (animating === null)
+        beginAnimation();
+}
+
 function setPage(pageNumber) {
     document.getElementById(`page-${currentPage}`).classList.add('hidden');
     document.getElementById(`page-${pageNumber}`).classList.remove('hidden');
