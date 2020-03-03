@@ -1,20 +1,5 @@
 const movementConstant = 20;
 
-const trashNames = {
-    'plastic_metal': [
-        'electricalCord', 'pepsiCan', 'plasticCup', 'reusablePlasticBag', 'tinCan', 'tire'
-    ],
-    'paper': [
-        'book', 'eggCarton', 'officePaper'
-    ],
-    'landfill': [
-        'cigarette', 'eraser', 'foodPackaging', 'milkBox', 'plasticBag', 'rubberSlipper', 'snickersWrapper', 'styrofoam'
-    ],
-    'compost': [
-        'foodScraps', 'leftoversFood', 'rottenTomato'
-    ]
-};
-
 function randomTrashType() {
     var trashTypes = Object.keys(trashNames);
     return trashTypes[Math.floor(Math.random() * trashTypes.length)];
